@@ -13,4 +13,4 @@ else
   echo '請輸入大於 0 整數'
 fi
 
-exit 1
+exit 0

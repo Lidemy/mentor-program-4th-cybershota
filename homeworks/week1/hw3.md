@@ -7,6 +7,7 @@
 CLI 即為 Command Line Interface (命令列介面)，是以鍵盤輸入操作電腦的技術。例如：PTT、《駭客任務》演出的部分橋段、傳統 BIOS 應該也可以算一種。
 
 ![駭客任務電影截圖](https://miro.medium.com/max/2560/1*HN-ZLfIkKaTO6XWHRZFhAg.jpeg "駭客任務幻想畫面")
+
 <small>這是看穿 CLI 的感覺</small>
 
 與之相對的是 Graphical User Interface (圖形使用者介面)，以螢幕顯示各種圖像、按鈕，以滑鼠點擊螢幕圖像符號來操作電腦，形成學習曲線更低的使用者體驗。
@@ -14,6 +15,7 @@ CLI 即為 Command Line Interface (命令列介面)，是以鍵盤輸入操作�
 如 1983 年蘋果電腦推出的全球首部搭載圖形使用者介面的個人電腦 [Apple Lisa](https://youtu.be/RW25-OuoFIk)。
 
 ![Apple Lisa](https://static.newmobilelife.com/wp-content/uploads/2017/12/lisa-os-will-be-open-sourcein-2018_00.jpg "Apple Lisa")
+
 <small>潮聖</small>
 
 ### 📦 這個技術的歷史成因？
@@ -25,6 +27,7 @@ CLI 即為 Command Line Interface (命令列介面)，是以鍵盤輸入操作�
 在傳真機以前，電報普遍以後，大約是 1920 （一戰結束，納粹黨成立、中國共產黨成立、張愛玲出生）年代，電傳打字機 (Teleprinter) 是一種不需要學習摩斯密碼，只要會英文打字機的輸入法，就能將文字在依照博多碼在紙帶上鑿洞。發送員再將紙帶撕下，送進發報機，遠端的接收機收到博多碼，會再將密碼自動轉換為文字以供人類閱讀。當時這個技術比電報和電話更便宜且精確。
 
 ![電傳打字機與操作員](https://upload.wikimedia.org/wikipedia/commons/8/89/WACsOperateTeletype.jpg "電傳打字機與操作員")
+
 <small>電傳打字機與操作員</small>
 
 這是人與人之間的訊息傳遞，但人與計算機，一直到 1970 年代，經過了同樣的打洞紙帶、到磁帶，一直也沒有更直接且即時的互動方式，都需要準備好這些物件，送入計算機，才能開始計算工作。
@@ -41,7 +44,9 @@ CLI 即為 Command Line Interface (命令列介面)，是以鍵盤輸入操作�
 
 這種紙帶或紙卡，是「記憶體」的原型（當然更原始的狀態就是書或者石板，但我覺得這兩種形式可以說是記憶載體的終端，一本書或石板無法再放入一台機器解讀，只有受教育的人類大腦可以解析這種載體），促成了 IBM (1911) 的成立。而今在記憶體容量越來越大的時代，我們仍舊使用這樣的紙卡——紙筆測驗用的劃記卡。
 
-![電晶體圖片](https://upload.wikimedia.org/wikipedia/commons/2/21/Transistorer_%28cropped%29.jpg "越來越小的電晶體")<small>越來越小的電晶體</small>
+![電晶體圖片](https://upload.wikimedia.org/wikipedia/commons/2/21/Transistorer_%28cropped%29.jpg "越來越小的電晶體")
+
+<small>越來越小的電晶體</small>
 
 #### The One 救世主 —— 積體電路 (1958)
 
@@ -152,6 +157,10 @@ $ touch afu.js
 #### ✏️ 幫 h0w 哥做好指令集
 
 h0w 哥可以在想使用以上指令的資料夾中，執行 [h0w.sh](h0w.sh) (~~音量注意~~)就可以省去學習的麻煩。
+
+```zsh
+$ sh h0w.sh
+```
 
 ### 🐙 GitHub CLI 玩什麼？
 

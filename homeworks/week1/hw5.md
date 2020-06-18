@@ -78,10 +78,12 @@
 2. 該字串同樣連同 Cookie 被包裹為 HTTP 報文，目的地為 Google 負責使者者資料儲存、分析(?)的後端伺服器（如果有登入帳號的話），該後端伺服器解析報文內容後，存入該使用者相關資料庫。
 
 HTTP 報文
+
 ![](https://i.imgur.com/Cq6Gtbz.png)
 [圖片來源](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Messages)
 
 就像以前的電報紙，有報頭有內文
+
 ![](https://i.imgur.com/GAIWL6V.jpg)
 
 使用者發送的請求，經過類似開放式關聯系統互聯模型(OSI,Open System Interconnection Model)層層轉化為電子訊號，經過有線/無線設備與線材，橫越大地與海洋，抵達某台域名解析器的地理位置。
@@ -91,7 +93,7 @@ HTTP 報文
 ![](https://i.imgur.com/GVm3UrA.png)
 [圖片來源](https://aws.amazon.com/tw/route53/what-is-dns/?sc_channel=EL&sc_campaign=Event_2016_vid&sc_medium=YouTube&sc_content=video829&sc_detail=EVENT&sc_country=US)
 
-如果這是使用者人生第一次造訪 Google 首頁，且使用全新的電腦，當他搜尋 Google.com 時（用 IE），該文字經過 OSI 模型轉為電子訊號，經網路線抵達 DNS 域名解析器(resolver)，該解析器會將搜尋字串從根域名伺服器比對到確實存放該域名 IP 值的伺服器，回傳 IP 位址給使用者電腦，使者電腦知道確實 IP 位置後，再發送相同請求到該位置，得到回傳結果。
+如果這是使用者人生第一次造訪 Google 首頁，且使用全新的電腦，當他搜尋 Google. com 時（用 IE），該文字經過 OSI 模型轉為電子訊號，經網路線抵達 DNS 域名解析器(resolver)，該解析器會將搜尋字串從根域名伺服器比對到確實存放該域名 IP 值的伺服器，回傳 IP 位址給使用者電腦，使者電腦知道確實 IP 位置後，再發送相同請求到該位置，得到回傳結果。
 
 ##### 3.得到搜尋結果
 

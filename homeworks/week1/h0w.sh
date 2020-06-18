@@ -1,4 +1,5 @@
 #!/bin/bash
+#影片來源：https://howger.orange.tw/
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 echo "h0wger is in the house"
