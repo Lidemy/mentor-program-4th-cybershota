@@ -100,6 +100,16 @@ Git 最重要的概念就是它「追蹤檔案變動」而不是把檔案的每�
 
 ---
 
+##### 所以 Git 如何下標記與追蹤標記？
+
+(簡記，發現這週作業寫太久了哈哈，我需要 move on)
+
+關鍵字有：SHA-1 (Secure Hash Algorithm)、雜湊樹 (hash tree)
+
+Git 與 區塊鏈有相似的特性 ~~（蛤？學 Git 還可以學到區塊鏈，潮爆惹，可以來唬唬別人ㄌ）~~ 因為它們都是基於雜湊樹的概念。但最大的不同是，區塊鏈比 Git 更自動化。
+
+[Why is Git not considered a “block chain”?](https://stackoverflow.com/questions/46192377/why-is-git-not-considered-a-block-chain)
+
 #### 📦 這個技術的語言構成？
 
 ![](https://i.imgur.com/qwMbqcv.png)
