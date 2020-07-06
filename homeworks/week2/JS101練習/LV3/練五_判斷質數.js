@@ -3,13 +3,13 @@
 
 function isPrime(n) {
   if (n === 1) {
-    console.log("false");
+    return false;
   } else if (n === 2) {
-    console.log("true");
+    return true;
   } else if (divition(n)) {
-    console.log("true");
+    return true;
   } else {
-    console.log("false");
+    return false;
   }
 
   function divition(n) {
@@ -23,6 +23,6 @@ function isPrime(n) {
   }
 }
 
-isPrime(1);
-isPrime(5);
-isPrime(37);
+console.log(isPrime(1));
+console.log(isPrime(5));
+console.log(isPrime(37));
