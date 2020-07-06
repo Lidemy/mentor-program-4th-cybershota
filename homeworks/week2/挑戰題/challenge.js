@@ -11,7 +11,27 @@
 //   return -1
 // }
 
-function search(arr, n) {}
+// Huli 的第一個搜尋在我的 VSCode 計算是 10.533ms
+// Huli 的第二個搜尋在我的 VSCode 計算是 7.72ms
 
-search([1, 3, 10, 14, 39], 14);
-search([1, 3, 10, 14, 39], 299);
+// 我的第一個搜尋在我的 VSCode 計算是 7.073ms
+// 我的第二個搜尋在我的 VSCode 計算是 7.34ms
+// 第二個搜尋的差異比較不明顯，而且時間計算是浮動的
+
+console.time();
+function search(arr, n) {
+  if (n > arr[arr.length - 1]) return -1;
+  let half = Math.round(arr.length / 2);
+  if (n >= arr[half] && n <= arr[arr.length - 1]) {
+    for (let i = half; i < arr.length; i++) {
+      if (n === arr[i]) return i;
+    }
+  } else {
+    for (let i = 0; i < half; i++) {
+      if (n === arr[i]) return i;
+    }
+  }
+}
+console.log(search([1, 3, 10, 14, 39], 14));
+// console.log(search([1, 3, 10, 14, 39], 299));
+console.timeEnd();

@@ -2,7 +2,9 @@ function join(arr, concatStr) {
   let joinStr = "";
   for (let i = 0; i < arr.length; i++) {
     joinStr += arr[i];
-    joinStr += concatStr;
+    if (i < arr.length - 1) {
+      joinStr += concatStr;
+    }
   }
   return joinStr;
 }
