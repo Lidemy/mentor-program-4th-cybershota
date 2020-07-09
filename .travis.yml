@@ -5,7 +5,4 @@ node_js:
 install:
   - npm install
 script:
-  -npm run test
-branches:
-  only:
-    - hw-week2
+  - npm run test
