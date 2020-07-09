@@ -1,21 +1,22 @@
-var readline = require('readline');
-var rl = readline.createInterface({
+const readline = require('readline');
+
+const rl = readline.createInterface({
   input: process.stdin,
 });
 
-var lines = [];
+const lines = [];
 
-rl.on('line', function (line) {
+rl.on('line', (line) => {
   lines.push(line);
 });
 
-rl.on('close', function () {
+function solve(arr) {
+  // 遇到物件傳參考特性，要小心
+  const strArr = arr[0].split('');
+  const reverseStr = strArr.reverse().join('');
+  console.log(arr[0] === reverseStr ? 'True' : 'False');
+}
+
+rl.on('close', () => {
   solve(lines);
 });
-
-function solve(lines) {
-  // 遇到物件傳參考特性，要小心
-  let strArr = lines[0].split('');
-  let reverseStr = strArr.reverse().join('');
-  console.log(lines[0] === reverseStr ? 'True' : 'False');
-}

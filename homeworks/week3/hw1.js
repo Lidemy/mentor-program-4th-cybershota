@@ -1,29 +1,31 @@
-var readline = require('readline');
-var rl = readline.createInterface({
+const readline = require('readline');
+
+const rl = readline.createInterface({
   input: process.stdin,
 });
 
-var lines = [];
+const lines = [];
 
-rl.on('line', function (line) {
+rl.on('line', (line) => {
   lines.push(line);
 });
 
-rl.on('close', function () {
-  solve(lines);
-});
-
-function solve(lines) {
+function solve(arr) {
   let str = '';
-  for (let i = 1; i <= lines[0]; i++) {
+
+  function star(n) {
+    for (let i = 1; i <= n; i += 1) {
+      str += '*';
+    }
+  }
+
+  for (let i = 1; i <= arr[0]; i += 1) {
     star(i);
     console.log(str);
     str = '';
   }
-
-  function star(n) {
-    for (let i = 1; i <= n; i++) {
-      str += '*';
-    }
-  }
 }
+
+rl.on('close', () => {
+  solve(lines);
+});

@@ -1,20 +1,27 @@
-var readline = require('readline');
-var rl = readline.createInterface({
+const readline = require('readline');
+
+const rl = readline.createInterface({
   input: process.stdin,
 });
 
-var lines = [];
+const lines = [];
 
-rl.on('line', function (line) {
+rl.on('line', (line) => {
   lines.push(line);
 });
 
-rl.on('close', function () {
-  solve(lines);
-});
+function solve(arr) {
+  const numberArr = arr.slice(1);
 
-function solve(lines) {
-  let numberArr = lines.slice(1);
+  function isPrime(n) {
+    if (n === 1) return false;
+    for (let i = 2; i < n; i += 1) {
+      if (n % i === 0) {
+        return n === i;
+      }
+    }
+    return true;
+  }
 
   numberArr.forEach((el) => {
     if (isPrime(Number(el))) {
@@ -23,14 +30,8 @@ function solve(lines) {
       console.log('Composite');
     }
   });
-
-  function isPrime(n) {
-    if (n === 1) return false;
-    for (let i = 2; i < n; i++) {
-      if (n % i === 0) {
-        return n === i ? true : false;
-      }
-    }
-    return true;
-  }
 }
+
+rl.on('close', () => {
+  solve(lines);
+});

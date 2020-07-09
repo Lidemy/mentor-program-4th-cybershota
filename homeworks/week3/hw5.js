@@ -1,23 +1,21 @@
-var readline = require('readline');
-var rl = readline.createInterface({
+/* eslint-disable no-undef */
+const readline = require('readline');
+
+const rl = readline.createInterface({
   input: process.stdin,
 });
 
-var lines = [];
+const lines = [];
 
-rl.on('line', function (line) {
+rl.on('line', (line) => {
   lines.push(line);
 });
 
-rl.on('close', function () {
-  solve(lines);
-});
-
-function solve(lines) {
-  let round = lines.slice(1);
+function solve(arr) {
+  const round = arr.slice(1);
   // 第一次用 BigInt() 好興奮
   round.forEach((el) => {
-    let elArr = el.split(' ');
+    const elArr = el.split(' ');
     if (elArr[2] === '1') {
       if (BigInt(elArr[0]) > BigInt(elArr[1])) {
         console.log('A');
@@ -26,14 +24,16 @@ function solve(lines) {
       } else {
         console.log('DRAW');
       }
+    } else if (BigInt(elArr[0]) > BigInt(elArr[1])) {
+      console.log('B');
+    } else if (BigInt(elArr[0]) < BigInt(elArr[1])) {
+      console.log('A');
     } else {
-      if (BigInt(elArr[0]) > BigInt(elArr[1])) {
-        console.log('B');
-      } else if (BigInt(elArr[0]) < BigInt(elArr[1])) {
-        console.log('A');
-      } else {
-        console.log('DRAW');
-      }
+      console.log('DRAW');
     }
   });
 }
+
+rl.on('close', () => {
+  solve(lines);
+});
