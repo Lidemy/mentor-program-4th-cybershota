@@ -1,18 +1,4 @@
-// 修改完 ESLint
-// LIOJ 通過
 /* eslint-disable no-undef */
-const readline = require('readline');
-
-const rl = readline.createInterface({
-  input: process.stdin,
-});
-
-const lines = [];
-
-rl.on('line', (line) => {
-  lines.push(line);
-});
-
 function solve(arr) {
   const round = arr.slice(1);
   // 第一次用 BigInt() 好興奮
@@ -36,6 +22,4 @@ function solve(arr) {
   });
 }
 
-rl.on('close', () => {
-  solve(lines);
-});
+module.exports = solve;

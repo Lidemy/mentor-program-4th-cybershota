@@ -1,17 +1,3 @@
-// 修改完 ESLint
-// LIOJ 通過
-const readline = require('readline');
-
-const rl = readline.createInterface({
-  input: process.stdin,
-});
-
-const lines = [];
-
-rl.on('line', (line) => {
-  lines.push(line);
-});
-
 function solve(arr) {
   // 字串處理
   const spaceIndex = arr[0].indexOf(' ');
@@ -42,6 +28,4 @@ function solve(arr) {
   }
 }
 
-rl.on('close', () => {
-  solve(lines);
-});
+module.exports = solve;
