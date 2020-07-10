@@ -289,14 +289,14 @@ function solve(arr) {
 #### 如何讓 Jest 測 console.log
 
 ```javascript
-// 將 node.js 的 console 物件掛上 jset 的 mock function (嘲弄函式!? 蛤？應該有點像可自定義的模擬函式？)
+//  將 node.js 的 console 物件掛上 jset 的 mock function (嘲弄函式!? 蛤？應該有點像可自定義的模擬函式？)
 global.console = {
   log: jest.fn(),
 };
 
 describe('hw1：好多星星', () => {
   it('印出 1 顆星星', () => {
-    console.log(hw1(['1'])); //這樣從 console 物件中可以 dotnotation 出剛剛加上去的 log，其中的值是 jest 的 mock function
+    console.log(hw1(['1'])); //這樣從 console 物件中可以 dot-notation 出剛剛加上去的 log，其中的值是 jest 的 mock function
     expect(console.log).toHaveBeenCalledWith('*');// 預期 console.log 被呼叫時的回傳值是...
   });
 }
@@ -311,7 +311,7 @@ describe('hw1：好多星星', () => {
 
 [![](https://travis-ci.org/Lidemy/mentor-program-4th-cybershota.svg?branch=hw-week3)](https://travis-ci.org/Lidemy/mentor-program-4th-cybershota.svg?branch=hw-week3)
 
-打鐵趁熱複習怎麼街上 Travis 做遠端分支測試
+打鐵趁熱複習怎麼接上 Travis 做遠端分支測試
 
 #### Travis 配置文件
 
