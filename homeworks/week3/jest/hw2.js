@@ -1,3 +1,4 @@
+// 重新發PR
 function solve(arr) {
   // 字串處理
   const spaceIndex = arr[0].indexOf(' ');

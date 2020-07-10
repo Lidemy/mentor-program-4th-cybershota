@@ -1,3 +1,4 @@
+// 重新發PR
 function solve(arr) {
   const numberArr = arr.slice(1);
 

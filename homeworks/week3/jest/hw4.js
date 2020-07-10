@@ -1,3 +1,4 @@
+// 重新發PR
 function solve(arr) {
   // 遇到物件傳參考特性，要小心
   const strArr = arr[0].split('');
