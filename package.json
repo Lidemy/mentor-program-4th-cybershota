@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "startTwitchChallenge": "node ./homeworks/week4/Challenge/challenge.js",
+    "startTwitch1": "node ./homeworks/week4/hw4.js",
+    "start": "node ./homeworks/week4/hw1.js",
     "lint": "eslint ./homeworks/**/*.js",
     "test": "jest"
   },
@@ -27,7 +30,11 @@
     "url": "https://github.com/Lidemy/mentor-program-4th/issues"
   },
   "homepage": "https://github.com/Lidemy/mentor-program-4th#readme",
-  "dependencies": {},
+  "dependencies": {
+    "airtable": "^0.8.1",
+    "dotenv": "^8.2.0",
+    "request": "^2.88.2"
+  },
   "devDependencies": {
     "eslint": "^5.15.1",
     "eslint-config-airbnb": "^17.1.0",
