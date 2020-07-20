@@ -25,7 +25,6 @@ h6 {
 
 .container {
   display: flex;
-  width: 100vw;
   flex-flow: column;
 }
 
@@ -103,6 +102,7 @@ h6 {
 #bannerText {
   color: white;
   font-size: 1.18rem;
+  font-weight: bold;
   padding-bottom: 0.4rem;
 }
 
