@@ -31,7 +31,6 @@ function reqTwitch(search, set) {
           console.log('error: ', err);
         }
       }
-      console.log('output');
       return output.streams.forEach((item) => {
         console.log(
           // eslint-disable-next-line no-underscore-dangle
