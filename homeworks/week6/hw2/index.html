@@ -3,63 +3,107 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="新拖延運動黑克松報名表單">
     <title>新拖延運動報名表單</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    
     <link rel="stylesheet" type="text/css" href="./normalize.css" />
     <link rel="stylesheet" type="text/css" href="./main.css" />
   </head>
+
   <body>
+
     <div class="container">
-      <div class="form-paper">
-        <form>
-          <h1>新拖延運動報名表單</h1>
-          <br />
-          <p>活動日期：2020/12/10 ~ 2020/12/11</p>
-          <p>活動地點：台北市大安區新生南路二段1號</p>
-          <p>*必填</p>
 
-          <div class="form-group">
-            <label for="nick-name">暱稱</label>
-            <input type="text" id="nick-name" placeholder="您的回答" />
-          </div>
-
-          <div class="form-group">
-            <label for="email">電子郵件</label>
-            <input type="email" id="email" placeholder="您的電子郵件" />
-          </div>
-
-          <div class="form-group">
-            <label for="ceil-phone">手機號碼</label>
-            <input type="text" id="ceil-phone" placeholder="您的手機號碼" />
-          </div>
-
-          <div class="form-group">
-            <label for="category">報名類型</label>
-            <input type="radios" id="category" placeholder="您的手機號碼" />
-          </div>
-
-          <div class="form-group">
-            <label for="how-know">怎麼知道這個活動的？</label>
-            <input type="text" id="how-know" placeholder="您的回答" />
-          </div>
-
-          <div class="form-group">
-            <label for="other">其他</label>
-            <p>對活動的一些建議</p>
-            <input type="text" id="other" placeholder="您的回答" />
-          </div>
-
-          <button type="submit">提交</button>
-          <p>請勿透過表單送出您的密碼。</p>
-        </form>
+      <div class="banner">
+        <picture>
+          <source srcset="src/bg-header.webp" type="image/webp">
+          <source srcset="src/bg-header.png" type="image/png" />
+          <img src="src/bg-header.png" alt="新拖延運動宣傳圖" />
+        </picture>
       </div>
 
-      <footer>
-        <p>© 2020 © Copyright. All rights Reserved.</p>
-      </footer>
+      
+      <form>
+        <div class="form-block form-title">
+        <div class="form-group">
+          <h1>新拖延運動報名表單</h1>
+          <br />
+          <p>
+            活動日期：2020/12/10 ~ 2020/12/11
+            <br />
+            活動地點：台北市大安區新生南路二段1號
+            <br />
+            <div class="red-warn">* 必填</div>
+          </p>
+        </div>
+      </div>
+
+      <div class="form-block">
+        <div class="form-group">
+          <span id="name">暱稱<sup> *</sup></span>
+          <input type="text" class="input" id="nick-name" placeholder="您的回答" autocomplete="nickname" required aria-labelledby="nick-name name"/>
+          <label for="nick-name" class="label-input"></label>
+        </div>
+        </div>
+
+        <div class="form-block">
+          <div class="form-group">
+            <span id="email-address">電子郵件<sup> *</sup></span>
+            <input type="email" class="input" id="email" placeholder="您的電子郵件" autocomplete="email" required aria-labelledby="email email-address"/>
+            <label for="email" class="label-input"></label>
+          </div>
+        </div>
+
+        <div class="form-block">
+          <div class="form-group">
+            <span id="phone-number">手機號碼<sup> *</sup></span>
+            <input type="text" class="input" id="cell-phone" placeholder="您的手機號碼" autocomplete="mobile" required aria-labelledby="cell-phone phone-number"/>
+            <label for="cell-phone" class="label-input"></label>
+          </div>
+        </div>
+
+        <div class="form-block">
+          <div class="form-group">
+            <span for="category">報名類型<sup> *</sup></span>
+            <div class="radio-block">
+              <input type="radio" class="input-radio" id="category-bed" name="category" value="躺在床上用想像力實作"/>
+              <label for="category-bed"></label>
+              <span>躺在床上用想像力實作</span>
+            </div>
+            <div class="radio-block">
+              <input type="radio" class="input-radio" id="category-phone" name="category" value=" 趴在地上滑手機找現成的"/>
+              <label for="category-phone"></label>
+              <span>趴在地上滑手機找現成的</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-block">
+          <div class="form-group">
+            <span id="how-know">怎麼知道這個活動的？<sup> *</sup></span>
+            <input type="text" class="input" id="answer" placeholder="您的回答" autocomplete="none" required aria-labelledby="answer how-know"/>
+            <label for="answer" class="label-input"></label>
+          </div>
+        </div>
+
+        <div class="form-block">
+          <div class="form-group">
+            <span id="else">其他</span>
+            <p>對活動的一些建議</p>
+            <input type="text" class="input" id="advice" placeholder="您的回答" autocomplete="none" aria-labelledby="advice else"/>
+            <label for="advice" class="label-input"></label>
+          </div>
+        </div>
+
+        <button type="submit">提交</button>
+        <p>請勿透過表單送出您的密碼。</p>
+      </form>
+
     </div>
+
+    <footer>
+      <p>© 2020 © Copyright. All rights Reserved.</p>
+    </footer>
+
   </body>
 </html>
