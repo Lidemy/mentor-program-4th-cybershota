@@ -1,17 +1,3 @@
-// 修改完 ESLint
-// LIOJ 通過
-const readline = require('readline');
-
-const rl = readline.createInterface({
-  input: process.stdin,
-});
-
-const lines = [];
-
-rl.on('line', (line) => {
-  lines.push(line);
-});
-
 function solve(arr) {
   const numberArr = arr.slice(1);
 
@@ -19,7 +5,7 @@ function solve(arr) {
     if (n === 1) return false;
     for (let i = 2; i < n; i += 1) {
       if (n % i === 0) {
-        return false;
+        return n === i;
       }
     }
     return true;
@@ -34,6 +20,4 @@ function solve(arr) {
   });
 }
 
-rl.on('close', () => {
-  solve(lines);
-});
+module.exports = solve;
