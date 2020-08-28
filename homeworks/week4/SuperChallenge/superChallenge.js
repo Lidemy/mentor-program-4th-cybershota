@@ -1,5 +1,5 @@
 const process = require('process');
-const setBook = require('./hw2_module');
+const setBook = require('./sp_modules');
 
 const args = process.argv;
 const action = args[2];
