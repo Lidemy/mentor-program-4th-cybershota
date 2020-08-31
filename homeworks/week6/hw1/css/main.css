@@ -1,0 +1,603 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Questrial', 'Microsoft JhengHei', '微軟正黑', 'Noto Sans TC', sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  max-width: 1920px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: stretch;
+  overflow-x: hidden;
+  margin: auto auto;
+}
+
+/* 導覽列 */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: white;
+}
+
+.nav-group {
+  display: flex;
+  flex-direction: row nowrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 1920px;
+  height: auto;
+  overflow-x: hidden;
+  padding: 20px 60px;
+  margin: auto;
+  box-shadow: 0 4px 6px -7px rgba(0, 0, 0, 0.7);
+}
+
+.navbar-sitename {
+  color: #489846;
+  font-size: 2.25rem;
+  padding-bottom: 1.6px;
+  text-align: center;
+}
+
+.navbar-list {
+  display: inherit;
+  margin-left: auto;
+  font-size: 5.5rem;
+  list-style: none;
+}
+
+.navbar-list li {
+  margin: 0 3.68px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.navbar-list li.active,
+.navbar-list li:hover {
+  background: #ff7286;
+}
+
+.navbar-list li.active a,
+.navbar-list li:hover a {
+  color: white;
+}
+
+.navbar-list li a {
+  display: inherit;
+  text-decoration: none;
+  color: black;
+  margin-top: 4px;
+  padding: 8px 12.8px;
+  font-size: 1.125rem;
+}
+
+.navbar .menu-btn,
+.navbar .menu-icon {
+  display: none;
+}
+
+/* 首圖 */
+.banner-section {
+  position: relative;
+  top: 84px;
+}
+
+.banner-picture img {
+  background-color: teal;
+  position: fixed;
+  z-index: -5;
+  filter: brightness(0.8);
+}
+
+#bannerText {
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  margin: 12% auto 18% auto;
+  text-align: center;
+  z-index: 10;
+}
+
+#bannerText h1 {
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.content-context {
+  max-width: 1920px;
+  margin: auto;
+  position: relative;
+  top: 0;
+  background-color: white;
+}
+
+/* 簡介 */
+.intro {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.sub-title-wrap::before {
+  display: inline-block;
+  content: '\00a0';
+  height: 50px;
+  width: 100%;
+  background-color: white;
+}
+
+.sub-title-group {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.green-highlight {
+  background-color: #a3dea2;
+  width: 10px;
+  height: 1.8rem;
+  margin: 0 6.4px;
+  margin-bottom: 2px;
+}
+
+.sub-title-group h2 {
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+
+/* 短文 */
+.paragraph {
+  margin: 17.6px auto 0 auto;
+  max-width: 70%;
+}
+
+.paragraph p {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 35px;
+}
+
+/* 按鈕 */
+.paragraph::after {
+  content: '\00a0';
+  line-height: 3rem;
+  width: 100%;
+}
+
+.button-selection {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.action {
+  cursor: pointer;
+  background-color: #a8e8e1;
+  height: 6rem;
+  width: 12rem;
+  margin: 0 3px;
+  font-size: 1.8rem;
+  color: #3e613d;
+  outline-color: #3e613d;
+  border: none;
+  border-radius: 8px;
+  transition: transform 0.2s ease-out;
+}
+
+.action:hover {
+  transform: translateY(-15px);
+}
+
+.button-selection .action:nth-child(2) {
+  background-color: #f9f9b5;
+}
+
+/* 菜單 */
+
+.horizon {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-frame {
+  overflow: hidden;
+}
+
+.img-frame img {
+  display: block;
+  transition: transform 0.8s ease;
+}
+
+.img-frame img:hover {
+  transform: scale(1.2, 1.2);
+}
+
+/* 留言 */
+.top-comment {
+  width: 100%;
+}
+
+.top-comment .horizon {
+  margin: 0 55px;
+}
+
+.comment-group {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 80%;
+  margin: 0 15px;
+}
+
+.comment-group .avatar {
+  position: absolute;
+  top: 7px;
+  height: 64px;
+}
+
+.avatar img {
+  max-width: 70px;
+  border: 1px solid #c1c1c1;
+  border-radius: 100%;
+}
+
+.avatar p {
+  font-size: 1rem;
+}
+
+.comment-block {
+  border: 1px solid #c7e5ec;
+  width: 100%;
+  height: 205px;
+  margin: 40px 8px 20px 8px;
+  padding-top: 25px;
+  border-radius: 6px;
+}
+
+.comment-block p {
+  margin-top: 30px;
+  padding: 15px 11.2px;
+  font-size: 1rem;
+  line-height: normal;
+}
+
+.map {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3px;
+}
+
+.google-map-wrapper {
+  margin: 1rem auto 0 auto;
+  width: 90%;
+  height: 18.5rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
+.light-green {
+  width: 100%;
+  padding: 1rem 0 3rem 0;
+  background-color: #e8efee;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  width: 90%;
+}
+
+.detail {
+  margin-top: 0.6rem;
+  color: #484848;
+}
+
+.detail > ul > li {
+  list-style: none;
+  line-height: normal;
+  font-size: 0.875rem;
+}
+
+.brand {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.brand h3 {
+  color: #489846;
+  font-size: 2.25rem;
+  font-weight: normal;
+}
+
+.brand a {
+  text-decoration: none;
+  color: #484848;
+  font-size: 0.875rem;
+}
+
+.dark-green {
+  background-color: #35564b;
+  width: 100%;
+  height: auto;
+  color: white;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.dark-green p {
+  margin: auto;
+  max-width: 80%;
+}
+
+/* RWD */
+/* tablet portrait 1024 */
+@media (max-width: 1024px) {
+  #bannerText {
+    margin: 10% auto 20% auto;
+  }
+
+  .paragraph {
+    max-width: 80%;
+  }
+
+  .comment-group {
+    margin: 0 8px;
+  }
+
+  .comment-block {
+    height: 250px;
+  }
+
+  .comment-block p {
+    margin-top: 30px;
+    padding: 10px 11.2px;
+  }
+}
+
+/* tablet portrait 768 */
+/* 漢堡選單出現 */
+@media (max-width: 768px) {
+  #bannerText {
+    margin: 17% auto 29% auto;
+  }
+
+  .banner-picture img {
+    max-width: 150%;
+    margin-left: -23%;
+  }
+
+  #bannerText h1 {
+    font-size: 50px;
+  }
+
+  .nav-group {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 15px 60px;
+  }
+
+  .navbar-sitename {
+    flex: 1 0 80%;
+    line-height: 2.25rem;
+    margin: auto;
+  }
+
+  .navbar .menu-icon {
+    cursor: pointer;
+    display: block;
+    margin: 5px 0;
+    padding: 22px 8px;
+  }
+
+  .navbar .menu-icon .hamburger-icon {
+    background-color: rgb(79, 79, 79);
+    display: block;
+    height: 3px;
+    width: 30px;
+    position: relative;
+    transition: background 0.2s ease-out;
+  }
+
+  .navbar .menu-icon .hamburger-icon:before,
+  .navbar .menu-icon .hamburger-icon:after {
+    background-color: rgb(79, 79, 79);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    transition: all 0.2s ease-out;
+  }
+
+  .navbar .menu-icon .hamburger-icon:before {
+    top: 10px;
+  }
+
+  .navbar .menu-icon .hamburger-icon:after {
+    top: -10px;
+  }
+
+  .navbar .navbar-list {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    max-height: 0;
+    overflow: hidden;
+    text-align: center;
+    transition: max-height 0.2s ease-out;
+  }
+
+  .navbar .menu-btn:checked ~ .navbar-list {
+    max-height: 240px;
+  }
+
+  /* 漢堡動畫 */
+  /* 漢堡按下後，線條會變透明 */
+  .navbar .menu-btn:checked ~ .menu-icon .hamburger-icon {
+    background: transparent;
+  }
+
+  /* 上下兩條線各自旋轉 */
+  .navbar .menu-btn:checked ~ .menu-icon .hamburger-icon:before {
+    transform: rotate(-45deg);
+  }
+
+  .navbar .menu-btn:checked ~ .menu-icon .hamburger-icon:after {
+    transform: rotate(45deg);
+  }
+
+  /* 強制矯正旋轉軸心？？ */
+  /* 如果沒加以下，線條旋轉會無法形成差差，反而很像大於符號 */
+  .navbar .menu-btn:checked ~ .menu-icon .hamburger-icon:before,
+  .navbar .menu-btn:checked ~ .menu-icon .hamburger-icon:after {
+    top: 0;
+  }
+
+  .paragraph {
+    max-width: 72%;
+  }
+
+  .horizon {
+    flex-flow: row wrap;
+  }
+
+  .horizon .img-frame {
+    max-width: 40%;
+    max-height: 40%;
+  }
+
+  .comment-block {
+    width: 100%;
+    height: auto;
+    padding-bottom: 8%;
+  }
+
+  .comment-block p {
+    padding: 15px 50px;
+  }
+  .navbar-list {
+    display: none;
+  }
+
+  .footer-info {
+    width: 100%;
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .brand {
+    margin-top: 1.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .detail {
+    margin-top: 1.5rem;
+    color: #484848;
+  }
+}
+
+/* mobile landscape 568 */
+@media (max-width: 568px) {
+  #bannerText {
+    margin: 17% auto 33% auto;
+  }
+
+  #bannerText h1 {
+    font-size: 40px;
+  }
+
+  .banner-picture img {
+    max-width: 150%;
+    margin-left: -25%;
+  }
+
+  .paragraph {
+    max-width: 72%;
+  }
+
+  .top-comment .horizon {
+    margin: 0 35px;
+  }
+
+  .button-selection {
+    flex-flow: column nowrap;
+  }
+
+  .button-selection .action:nth-child(2) {
+    margin-top: 20px;
+  }
+
+  .comment-block p {
+    padding: 10px 15px;
+  }
+
+  .footer-info {
+    width: 80%;
+  }
+}
+
+/* mobile portrait 320 */
+@media (max-width: 320px) {
+  .container {
+    /* 不知道為什麼在這著尺寸整個畫面會微微偏移 */
+    margin: auto -5%;
+  }
+
+  #bannerText {
+    margin: 23% auto 37% auto;
+  }
+
+  .banner-picture img {
+    max-width: 200%;
+    margin-left: -45%;
+  }
+
+  #bannerText h1 {
+    font-size: 40px;
+  }
+
+  .comment-block p {
+    padding: 10px 15px;
+  }
+}
