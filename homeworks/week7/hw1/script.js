@@ -93,7 +93,7 @@ function formValuate() {
     insertModalResult('advice', output);
   } else {
     validArry.push(true);
-    insertModalResult('無');
+    insertModalResult('advice', '無');
   }
 }
 
