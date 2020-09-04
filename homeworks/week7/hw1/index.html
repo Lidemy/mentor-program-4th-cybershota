@@ -41,11 +41,11 @@
       <div class="form-block">
         <div class="form-group">
           <span id="name">暱稱<sup> *</sup></span>
-          <input name="name" type="text" class="input" id="nick-name" placeholder="您的回答" autocomplete="nickname" required 
+          <input name="name" type="text" class="input" id="nick-name" placeholder="您的回答" autocomplete="name" required 
           minlength="2"
           maxlength="20"
           aria-labelledby="nick-name name"/>
-          <label for="nick-name" class="label-input"></label>
+          <label for="nick-name" class="label-input label-input-invalid"></label>
         </div>
         </div>
 
@@ -100,7 +100,7 @@
             <span id="else">其他</span>
             <p>對活動的一些建議</p>
             <input name="advice" type="text" class="input" id="advice" placeholder="您的回答" 
-            maxlength="500"
+            maxlength="300"
             autocomplete="off" aria-labelledby="advice else"/>
             <label for="advice" class="label-input"></label>
           </div>
@@ -114,15 +114,23 @@
     <div class="modal">
       <div class="modal-body">
         <span>╳</span>
-        <h2>請確認以下資料是否正確</h2>
-        <ul>
-          <li>暱稱</li>
-          <li>電子郵件</li>
-          <li>手機號碼</li>
-          <li>報名類型</li>
-          <li>怎麼知道這個活動的</li>
-          <li>其他</li>
-        </ul>
+        <h2>您...已經...成功...的...報名...了！</h2>
+        <br>
+        <h4>以下是您的報名資料：</h4>
+        <br>
+        <div class="content-scroll">
+          <ul>
+            <li>暱稱 |<b></b></li>
+            <li>電子郵件 |<b></b></li>
+            <li>手機號碼 |<b></b></li>
+            <li>報名類型 |<b></b></li>
+            <li>怎麼知道這個活動的
+              <p></p></li>
+            <li>其他
+            <p></p></li>
+          </ul>
+        </div>
+        <button>下載 pdf</button>
       </div>
     </div>
 

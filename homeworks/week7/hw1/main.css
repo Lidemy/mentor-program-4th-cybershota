@@ -62,6 +62,24 @@ sup {
   padding-bottom: 40px;
 }
 
+.warning{
+  display: inherit;
+}
+
+.warning::after{
+  display: inline-block;
+  content: "ⓘ 此欄位未填寫或格式錯誤";
+  width: 50%;
+  margin: 15px 0 0 0;
+  padding: 0 0 0 30px;
+  color: red;
+  font-size: 1rem;
+}
+
+.block-invalid{
+  border: 1px solid red;
+}
+
 .form-title {
   border-top: 15px solid #fad312;
   padding-top: 0;
@@ -146,6 +164,15 @@ input::placeholder {
   margin-left: 0%;
 }
 
+/* 其他回答輸入欄較長 */
+.form-block:nth-last-child(3) .form-group .input{
+  width: 100%;
+}
+
+.form-block:nth-last-child(3) .form-group .label-input {
+  width: 100%;
+}
+
 /* Radio 選單 */
 
 span[for='category'] {
@@ -217,11 +244,6 @@ span[for='category'] {
   font-size: 16px;
 }
 
-/* 其他回答輸入欄較長 */
-.form-block:nth-last-child(3) .form-group .label-input {
-  width: 100%;
-}
-
 button {
   margin-top: 20px;
   font-size: 15px;
@@ -280,11 +302,63 @@ footer p {
   justify-content: center;
   align-items: center;
   width: 50%;
-  height: 50%;
+  padding:50px 0;
   background-color: white;
   border-top: 15px solid #fad312;
   border-radius: 12px;
 }
+
+.modal-body h2{
+  letter-spacing: 3px;
+}
+
+.content-scroll{
+  display: block;
+  width: 80%;
+  height:300px;
+  margin: auto;
+  overflow-y:scroll;
+}
+
+.modal-body ul{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.modal-body li{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 3px 0;
+  list-style: none;
+  font-size: 1rem;
+  line-height: normal;
+}
+
+.modal-body li:nth-child(5),.modal-body li:nth-child(6){
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.modal-body b{
+  margin-left: 4px;
+  line-height: normal;
+}
+
+.modal-body p{
+  width: 95%;
+  margin: 5px 0;
+  text-align: justify;
+  font-weight: 600;
+  line-height: normal;
+  
+}
+
 
 .modal span {
   position: absolute;

@@ -1,17 +1,47 @@
 const form = document.querySelector('form');
+const modalResult = document.querySelectorAll('.modal-body ul li');
 const phoneInput = document.querySelector('#cell-phone');
 const modal = document.querySelector('.modal');
 
-// 表單驗證
+let elArry = [];
+let validArry = [];
+let data = [];
+
+console.log(modalResult);
+
+function addWarning(element) {
+  elArry.push(element);
+  form.childNodes[element].classList.add('block-invalid', 'warning');
+  form.childNodes[elArry[0]].scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function removeWarning(element) {
+  form.childNodes[element].classList.remove('block-invalid', 'warning');
+}
+
+function insertModalResult(content) {
+  data.push(content);
+  if (data.length === 6) {
+    for (let i = 0; i <= 5; i += 1) {
+      modalResult[i].childNodes[1].textContent = (data[i]);
+    }
+  }
+}
+
+/* ---------------------------------- */
+/*              表單驗證                */
+/* ---------------------------------- */
+
 // HTML form 使用 novalidate 關閉內建驗證
-// 使用純 JavaScript 做驗證程序
 function formValuate() {
   // 驗證暱稱
   if (form.name.value.match(/^[^\s].{0,18}[^\s]$/g)) {
-    console.log('暱稱驗證通過');
+    removeWarning(3);
+    validArry.push(true);
+    insertModalResult(form.name.value);
   } else {
-    console.log('暱稱驗證未通過');
-    return;
+    validArry.push(false);
+    addWarning(3);
   }
   // 驗證電子郵件
   if (
@@ -19,48 +49,88 @@ function formValuate() {
       /^(?:(([a-z0-9](([-!#$*+\w])(?:\.)?(?!\.))+))(?<!\.)@)(?:([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9]{0,22}[a-z0-9]$)/g,
     )
   ) {
-    console.log('電郵驗證通過');
+    removeWarning(5);
+    validArry.push(true);
+    insertModalResult(form.email.value);
   } else {
-    console.log('電郵驗證未通過');
-    return;
+    validArry.push(false);
+    addWarning(5);
   }
   // 驗證手機號碼
   if (form.phone.value.match(/\+(886) ([\d]{3})-([\d]{3})-([\d]{3})/g)) {
-    console.log('手機驗證通過');
+    removeWarning(7);
+    validArry.push(true);
+    insertModalResult(form.phone.value);
   } else {
-    console.log('手機驗證未通過');
-    return;
+    validArry.push(false);
+    addWarning(7);
   }
   // 驗證報名類型
   if (form.category.value) {
-    console.log(`勾選驗證成功：${form.category.value}`);
+    removeWarning(9);
+    validArry.push(true);
+    insertModalResult(form.category.value);
   } else {
-    console.log('勾選驗證失敗');
-    return;
+    validArry.push(false);
+    addWarning(9);
   }
-  // 驗證知道活動
-  if (form.howknow.value.match(/([\w\d]{1,100})/g)) {
+  // 驗證怎麼知道活動
+  if (form.howknow.value.match(/(.{1,100})/g)) {
+    removeWarning(11);
+    validArry.push(true);
     const output = form.howknow.value.trim();
-    console.log(`怎麼知道的：${output}`);
+    insertModalResult(output);
   } else {
-    console.log('未填寫怎麼知道的');
-    return;
+    validArry.push(false);
+    addWarning(11);
   }
-  // 驗證其他
-  if (form.advice.value.match(/([\w\d]{1,500})/g)) {
+  // 驗證其他建議
+  if (form.advice.value.match(/(.{1,300})/g)) {
+    validArry.push(true);
     const output = form.advice.value.trim();
-    console.log(`建議：${output}`);
+    insertModalResult(output);
   } else {
-    console.log('未填寫建議');
+    validArry.push(true);
+    insertModalResult('無');
   }
 }
 
+/* ---------------------------------- */
+/*           Button & Modal           */
+/* ---------------------------------- */
+
+// 按下 Button 驗證表單，全部成功顯示 Modal
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  elArry = [];
+  validArry = [];
+  data = [];
+  formValuate();
+  if (validArry.every(el => el === true)) {
+    modal.style.display = 'flex';
+  }
+});
+
+// 點擊 Modal 灰色區域關閉 Modal
+window.onclick = (e) => {
+  if (e.target === modal) {
+    modal.style.display = 'none';
+  }
+};
+
+
+/* ---------------------------------- */
+/*             使用者體驗               */
+/* ---------------------------------- */
+
+// 手機輸入自動加 +886
 phoneInput.addEventListener('click', () => {
   if (!phoneInput.value) {
     phoneInput.value = '+886 ';
   }
 });
 
+// 手機輸入限制數字
 phoneInput.addEventListener('keydown', (e) => {
   if (
     (e.keyCode >= 48 && e.keyCode <= 57)
@@ -72,8 +142,8 @@ phoneInput.addEventListener('keydown', (e) => {
   return e.preventDefault();
 });
 
+// 手機輸入每 3 數字補橫線
 phoneInput.addEventListener('keyup', (event) => {
-  console.log('keyup');
   if (event.key !== 'Backspace' || event.which !== 8) {
     if (phoneInput.value.length === 8 || phoneInput.value.length === 12) {
       phoneInput.value += '-';
@@ -81,19 +151,4 @@ phoneInput.addEventListener('keyup', (event) => {
   }
 });
 
-// 按下 Button 顯示 Modal
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  // 如果驗證未通過，滑至第一個未通過的輸入框
-  // 如果驗證通過，顯示 Modal 確認資料
-  modal.style.display = 'flex';
-  console.log(form.name.value);
-  formValuate();
-});
-
-// 點擊 Modal 灰色區域關閉 Modal
-window.onclick = (e) => {
-  if (e.target === modal) {
-    modal.style.display = 'none';
-  }
-};
+// 簡答字數統計提醒
