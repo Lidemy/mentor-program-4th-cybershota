@@ -76,6 +76,20 @@ sup {
   font-size: 1rem;
 }
 
+.text-count{
+  display: inherit;
+}
+
+.text-count::after{
+  content: attr(data-count);
+  display: block;
+  width: 50%;
+  margin: 15px 0 0 0;
+  padding: 0 0 0 30px;
+  color: rgb(157, 157, 157);
+  font-size: 1rem;
+}
+
 .block-invalid{
   border: 1px solid red;
 }
@@ -309,7 +323,22 @@ footer p {
 }
 
 .modal-body h2{
+  text-align: center;
   letter-spacing: 3px;
+  line-height: normal;
+}
+
+.modal span {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1rem;
+  color: rgb(106, 106, 106);
+  cursor: pointer;
+}
+
+.modal-body span:hover {
+  color: black;
 }
 
 .content-scroll{
@@ -331,7 +360,8 @@ footer p {
 .modal-body li{
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   align-items: center;
   margin: 3px 0;
   list-style: none;
@@ -359,15 +389,6 @@ footer p {
   
 }
 
-
-.modal span {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 1rem;
-  color: rgb(106, 106, 106);
-}
-
 @media (max-width: 768px) {
   .banner {
     height: 200px;
@@ -386,6 +407,22 @@ footer p {
 
   .form-group .label-input {
     width: 100%;
+  }
+
+  .modal-body{
+    width: 90%;
+  }
+
+  .modal-body h2{
+    width: 80%;
+  }
+
+  .modal-body span{
+    font-size: 1.5rem;
+  }
+
+  .content-scroll{
+    height:200px;
   }
 }
 
