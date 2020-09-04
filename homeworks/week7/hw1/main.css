@@ -267,6 +267,7 @@ button {
   background-color: #ffdf42;
   outline: 0;
   border: 0;
+  cursor: pointer;
 }
 
 button:hover {

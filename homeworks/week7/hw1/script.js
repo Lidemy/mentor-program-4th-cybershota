@@ -107,7 +107,6 @@ form.addEventListener('submit', (e) => {
   elArry = [];
   validArry = [];
   data = {};
-  modal.style.display = 'flex';
   formValuate();
   if (validArry.every(el => el === true)) {
     modal.style.display = 'flex';
