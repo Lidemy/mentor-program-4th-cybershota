@@ -1,5 +1,5 @@
 :root {
-  --white: #e6e2ec;
+  --white: #f4f4f4;
   --gray: #e0dbe6;
   --dark-gray: #bbb6c1;
   --pink: #f20789;
@@ -29,6 +29,8 @@ body {
   );
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  font-family: -apple-system, 'Microsoft JhengHei', '微軟正黑', BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body::-webkit-scrollbar {
@@ -195,8 +197,9 @@ body::-webkit-scrollbar {
 }
 
 .todo-item input:checked ~ label::after {
-  display: block;
   content: '∨';
+  display: block;
+  font-size: 12px;
   text-align: center;
   line-height: 13px;
   background-color: rgb(199, 199, 199);

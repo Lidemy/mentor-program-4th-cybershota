@@ -73,26 +73,10 @@ function createTodo(text) {
   return todoItem;
 }
 
+// 監聽 input 輸入框
 input.addEventListener('change', () => {
   inputText = input.value;
 });
-
-// Modal
-// 顯示 Modal
-// 兩種模式：新建 / 編輯
-function showModal(newTodo, eventText) {
-  if (newTodo === true) {
-    input.value = '';
-    // 按鈕轉為 Add
-    modal.childNodes[1].childNodes[3].textContent = 'Add';
-    modal.style.display = 'flex';
-  } else {
-    // 按鈕轉為 Submit
-    input.value = eventText.textContent;
-    modal.childNodes[1].childNodes[3].textContent = 'Submit';
-    modal.style.display = 'flex';
-  }
-}
 
 // 改變 Check 狀態
 function changeCheck() {
@@ -100,28 +84,7 @@ function changeCheck() {
   todoTarget.parentNode.classList.toggle('check');
 }
 
-// 辨別 Click 事件是新增 todo 還是 編輯 todo
-function dateClickEvent(e) {
-  if (e.target.matches('.todo-container')) {
-    showModal(true);
-  } else if (e.target.matches('p')) {
-    todoTarget = e.target;
-    showModal(false, e.target);
-  } else if (e.target.matches('input')) {
-    todoTarget = e.target;
-    changeCheck();
-  }
-}
-
-// 每日區塊監聽
-const dateBlocks = document.querySelectorAll('.date-block');
-dateBlocks.forEach((dateBlock) => {
-  dateBlock.addEventListener('click', (e) => {
-    // 儲存 Click 區塊 id
-    clickBlock = dateBlock.dataset.array;
-    dateClickEvent(e);
-  });
-});
+// Modal
 
 // 透過 Modal 新增/編輯 Todo
 function todoBtn() {
@@ -141,6 +104,35 @@ function todoBtn() {
 function deleBtn() {
   todoTarget.parentNode.remove();
   modal.style.display = 'none';
+}
+
+// 顯示 Modal
+// 兩種模式：新建 / 編輯
+function showModal(newTodo, eventText) {
+  if (newTodo === true) {
+    input.value = '';
+    // 按鈕轉為 Add
+    modal.childNodes[1].childNodes[3].textContent = 'Add';
+    modal.style.display = 'flex';
+  } else {
+    // 按鈕轉為 Submit
+    input.value = eventText.textContent;
+    modal.childNodes[1].childNodes[3].textContent = 'Submit';
+    modal.style.display = 'flex';
+  }
+}
+
+// 辨別 Click 事件是新增 todo 還是 編輯 todo
+function dateClickEvent(e) {
+  if (e.target.matches('.todo-container')) {
+    showModal(true);
+  } else if (e.target.matches('p')) {
+    todoTarget = e.target;
+    showModal(false, e.target);
+  } else if (e.target.matches('input')) {
+    todoTarget = e.target;
+    changeCheck();
+  }
 }
 
 // Add 或 Submit 按鈕監聽
@@ -168,3 +160,13 @@ function closeModal(e) {
 }
 
 modal.addEventListener('click', closeModal);
+
+// 每日區塊監聽
+const dateBlocks = document.querySelectorAll('.date-block');
+dateBlocks.forEach((dateBlock) => {
+  dateBlock.addEventListener('click', (e) => {
+    // 儲存 Click 區塊 id
+    clickBlock = dateBlock.dataset.array;
+    dateClickEvent(e);
+  });
+});
