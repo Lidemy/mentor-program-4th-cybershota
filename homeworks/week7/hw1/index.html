@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="新拖延運動黑克松報名表單">
+    <title>新拖延運動報名表單</title>
+    
+    <link rel="stylesheet" type="text/css" href="./normalize.css" />
+    <link rel="stylesheet" type="text/css" href="./main.css" />
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="banner">
+        <picture>
+          <source srcset="src/bg-header.webp" type="image/webp">
+          <source srcset="src/bg-header.png" type="image/png" />
+          <img src="src/bg-header.png" alt="新拖延運動宣傳圖" />
+        </picture>
+      </div>
+
+      
+      <form novalidate>
+        <div class="form-block form-title">
+        <div class="form-group">
+          <h1>新拖延運動報名表單</h1>
+          <br />
+          <p>
+            活動日期：2020/12/10 ~ 2020/12/11
+            <br />
+            活動地點：台北市大安區新生南路二段1號
+            <br />
+            <div class="red-warn">* 必填</div>
+          </p>
+        </div>
+      </div>
+
+      <div class="form-block">
+        <div class="form-group">
+          <span id="name">暱稱<sup> *</sup></span>
+          <input name="name" type="text" class="input" id="nick-name" placeholder="您的回答" autocomplete="name" required 
+          minlength="2"
+          maxlength="20"
+          aria-labelledby="nick-name name"/>
+          <label for="nick-name" class="label-input label-input-invalid"></label>
+        </div>
+        </div>
+
+        <div class="form-block">
+          <div class="form-group">
+            <span id="email-address">電子郵件<sup> *</sup></span>
+            <input name="email" type="email" class="input" id="email" placeholder="您的電子郵件" autocomplete="email" required 
+            maxlength="320"
+            aria-labelledby="email email-address"/>
+            <label for="email" class="label-input"></label>
+          </div>
+        </div>
+
+        <div class="form-block">
+          <div class="form-group">
+            <span id="phone-number">手機號碼<sup> *</sup></span>
+            <input name="phone" type="text" class="input" id="cell-phone" placeholder="您的手機號碼" autocomplete="off" required 
+            maxlength="16"
+            aria-labelledby="cell-phone phone-number"/>
+            <label for="cell-phone" class="label-input"></label>
+          </div>
+        </div>
+
+        <div class="form-block">
+          <div class="form-group">
+            <span for="category">報名類型<sup> *</sup></span>
+            <div class="radio-block">
+              <input name="category" type="radio" class="input-radio" id="category-bed" value="躺在床上用想像力實作"/>
+              <label for="category-bed"></label>
+              <span>躺在床上用想像力實作</span>
+            </div>
+            <div class="radio-block">
+              <input name="category" type="radio" class="input-radio" id="category-phone" value=" 趴在地上滑手機找現成的"/>
+              <label for="category-phone"></label>
+              <span>趴在地上滑手機找現成的</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-block" data-count='0 / 100'>
+          <div class="form-group">
+            <span id="how-know">怎麼知道這個活動的？<sup> *</sup></span>
+            <input name="howknow" type="text" class="input" id="answer" placeholder="您的回答" autocomplete="off" required 
+            maxlength="100"
+            aria-labelledby="answer how-know"/>
+            <label for="answer" class="label-input"></label>
+          </div>
+        </div>
+
+        <div class="form-block" data-count='0 / 300'>
+          <div class="form-group">
+            <span id="else">其他</span>
+            <p>對活動的一些建議</p>
+            <input name="advice" type="text" class="input" id="advice" placeholder="您的回答" 
+            maxlength="300"
+            autocomplete="off" aria-labelledby="advice else"/>
+            <label for="advice" class="label-input"></label>
+          </div>
+        </div>
+
+        <button type="submit">提交</button>
+        <p>請勿透過表單送出您的密碼。</p>
+      </form>
+
+      <!-- Modal -->
+    <div class="modal">
+      <div class="modal-body">
+        <span>╳</span>
+        <h2>您...已經...成功...的...報名...了！</h2>
+        <br>
+        <h4>以下是您的報名資料：</h4>
+        <br>
+        <div class="content-scroll">
+          <ul>
+            <li>暱稱 |<b></b></li>
+            <li>電子郵件 |<b></b></li>
+            <li>手機號碼 |<b></b></li>
+            <li>報名類型 |<b></b></li>
+            <li>怎麼知道這個活動的
+              <p></p></li>
+            <li>其他
+            <p></p></li>
+          </ul>
+        </div>
+        <button type="button" id="print">下載 pdf</button>
+      </div>
+    </div>
+
+    </div>
+
+    <footer>
+      <p>© 2020 © Copyright. All rights Reserved.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.0.0/jspdf.umd.js" integrity="sha512-4Ww5+yDJIiSHjMCneb1hi+R3pgBFdoevvMNUcz0MBMiD372JjEZIqnV1yGRfcN5ci1I4git6XoBbqMB/IHFzvw==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./script.js"></script>
+  </body>
+</html>
