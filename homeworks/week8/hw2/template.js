@@ -3,7 +3,9 @@ const { Twitch } = window;
 const categoryArea = document.querySelector('.category-area');
 const recommendArea = document.querySelector('.recommend-area');
 const mayLikeArea = document.querySelector('.maylike-area');
+const twentyArea = document.querySelector('.twenty-area');
 
+// new Twitch 使用的設定檔
 const options = {
   width: '100%',
   height: '100%',
@@ -13,29 +15,36 @@ const options = {
   parent: ['127.0.0.1', 'cybershota.imfast.io'],
 };
 
-// const player = new Twitch.Player('<player div ID>', options);
-// player.setVolume(0.5);
-
+// 數字三位一逗點
 function numberBeautify(number) {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
+// 側邊欄用名稱顯示美化
 function channelNameBeautify(displayname, name) {
-  if (displayname === name) {
+  if (displayname.toLowerCase() === name) {
     return displayname;
   }
   const nameBlock = `${displayname} (${name})`;
   return nameBlock;
 }
 
+// 主區塊頻道標題與內容美化
+function videoTitleBeautify(description, channelName) {
+  if (description.length <= 0) {
+    return channelName;
+  }
+  return description;
+}
+
 const template = {
-  category(img, localizedName, viewers) {
+  category(img, localizedName, viewers, name) {
     const el = document.createElement('div');
     el.className = 'category-block';
     el.innerHTML = `
-    <div class="stream-category">
+    <div class="stream-category" data-game="${name}">
       <div class="img-wrapper">
-        <img src="${img}">
+        <img src="${img}" alt="${name}_img">
       </div>
       <div class="streamer-card">
         <div class="streamer-data">
@@ -52,7 +61,7 @@ const template = {
     el.className = 'recommend-block';
     el.innerHTML = `
     <div class="avatar">
-    <img src="${img}" alt="" />
+    <img src="${img}" alt="${displayname}_img" />
     </div>
     <div class="recommend-name">
       <h5>${channelNameBeautify(displayname, name)}</h5>
@@ -64,25 +73,35 @@ const template = {
     </div>`;
     recommendArea.appendChild(el);
   },
-  mayLikeLive(previewImg, description, displayName, name, game, viewers) {
+  liveVideo(previewImg, description, logo, displayName, name, game, viewers, mayLike, twenty) {
     const el = document.createElement('div');
     el.className = 'stream-block';
     el.innerHTML = `
       <div class="video-wrapper">
         <span class="live-badge">LIVE</span>
         <span class="view-count">觀眾人數：${numberBeautify(viewers)}</span>
-        <img src="${previewImg}" alt=""/>
+        <img src="${previewImg}" alt="${displayName}_img"/>
       </div>
       <div class="streamer-card">
+        <div class="streamer-column">
+        <div class="avatar">
+          <img src="${logo}" alt="${displayName}_avatar"/>
+        </div>
         <div class="streamer-data">
-          <h6>${description}</h6>
-          <p>${channelNameBeautify(displayName, name)}</p>
-          <p class="streamer-category">${game}</p>
-          <button class="language-badge">中文</button>
+        <h6>${videoTitleBeautify(description, displayName)}</h6>
+        <p>${channelNameBeautify(displayName, name)}</p>
+        <p class="streamer-category">${game}</p>
+        <button class="language-badge">中文</button>
+        </div>
         </div>
       </div>
     `;
-    mayLikeArea.appendChild(el);
+    if (mayLike) {
+      mayLikeArea.appendChild(el);
+    }
+    if (twenty) {
+      twentyArea.appendChild(el);
+    }
   },
   /*
     Twitch Interactive Frames 使用方式：
@@ -116,19 +135,19 @@ const template = {
         <!-- 左側控制 -->
         <div class="left-control">
           <div class="video-btn play-btn">
-            <img src="./src/play_btn.svg" alt="" />
+            <img src="./src/play_btn.svg" alt="play video" />
           </div>
           <div class="video-btn volume">
-            <img src="./src/volumn_btn.svg" alt="" />
+            <img src="./src/volumn_btn.svg" alt="video volume" />
           </div>
         </div>
         <!-- 右側控制 -->
         <div class="right-control">
           <div class="video-btn gear">
-            <img src="./src/gear_btn.svg" alt="" />
+            <img src="./src/gear_btn.svg" alt="video setting" />
           </div>
           <div class="video-btn full">
-            <img src="./src/full_screen_btn.svg" alt="" />
+            <img src="./src/full_screen_btn.svg" alt="full screen" />
           </div>
         </div>
       </div>

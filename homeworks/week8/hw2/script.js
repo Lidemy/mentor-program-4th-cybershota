@@ -1,36 +1,72 @@
+// import 結尾沒標示檔案類型無法運作，但 ESLint 要我拿掉檔名，好奇怪＠＠
 // eslint-disable-next-line import/extensions
 import template from './template.js';
 
 const APIURL = 'https://api.twitch.tv/kraken';
 const CLIENT_ID = 'agcz06tlg03ulhxzaggv6bp2by5d5d';
 
-let playVideo;
+const category = document.querySelector('.category-area');
+
+let currentPlayVideo;
+
+// 頁面載入自動播放影片
+
+function autoPlay() {
+  const main = document.querySelector('.main .iframe-inject').getAttribute('id');
+  currentPlayVideo = template.carouselPlay(main);
+}
+
+function errorHandler(errorMessage) {
+  console.log(
+    `%c😱 很抱歉我們出錯了！\n${errorMessage}`,
+    'background:#9146ff; color:white; font-size:1rem; padding:0 10px',
+  );
+}
+
+/* ---------------------------------- */
+/*                遊戲類別              */
+/* ---------------------------------- */
 
 function getGamesData() {
   if (this.status >= 200 && this.status < 400) {
-    const data = JSON.parse(this.response);
+    let data;
+    try {
+      data = JSON.parse(this.response);
+    } catch (err) {
+      errorHandler(err);
+      return;
+    }
     data.top.forEach((d) => {
-      template.category(d.game.box.large, d.game.localized_name, d.viewers);
+      template.category(d.game.box.large, d.game.localized_name, d.viewers, d.game.name);
     });
   } else {
-    console.log(this.error);
+    errorHandler(this.status);
   }
 }
 
-// Get Top Games
 function requestTopGames() {
   const request = new XMLHttpRequest();
-  request.open('GET', `${APIURL}/games/top?limit=4`);
+  request.open('GET', `${APIURL}/games/top?limit=5`);
   request.setRequestHeader('Client-ID', CLIENT_ID);
   request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
   request.onload = getGamesData;
+  request.onerror = errorHandler;
   request.send();
 }
 
+/* ---------------------------------- */
+/*               側邊欄推薦             */
+/* ---------------------------------- */
+
 function getLiveChannels() {
   if (this.status >= 200 && this.status < 400) {
-    // console.log(JSON.parse(this.response));
-    const data = JSON.parse(this.response);
+    let data;
+    try {
+      data = JSON.parse(this.response);
+    } catch (err) {
+      errorHandler(err);
+      return;
+    }
     data.streams.forEach((d) => {
       template.recommendChannel(
         d.channel.logo,
@@ -41,40 +77,51 @@ function getLiveChannels() {
       );
     });
   } else {
-    console.log(this.error);
+    errorHandler(this.status);
   }
 }
 
-// Get Channels
 function requestChannels() {
   const request = new XMLHttpRequest();
   request.open('GET', `${APIURL}/streams?language=zh&limit=10`);
   request.setRequestHeader('Client-ID', CLIENT_ID);
   request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
   request.onload = getLiveChannels;
+  request.onerror = errorHandler;
   request.send();
 }
 
+/* ---------------------------------- */
+/*           可能喜歡的 LIVE            */
+/* ---------------------------------- */
+
 function getMayLikeLive() {
   if (this.status >= 200 && this.status < 400) {
-    // console.log(JSON.parse(this.response));
-    const data = JSON.parse(this.response);
+    let data;
+    try {
+      data = JSON.parse(this.response);
+    } catch (err) {
+      errorHandler(err);
+      return;
+    }
     data.streams.forEach((d) => {
-      template.mayLikeLive(
+      template.liveVideo(
         d.preview.large,
         d.channel.description,
+        d.channel.logo,
         d.channel.display_name,
         d.channel.name,
         d.channel.game,
         d.viewers,
+        true,
+        false,
       );
     });
   } else {
-    console.log(this.error);
+    errorHandler(this.status);
   }
 }
 
-// Get Live
 function requestMayLikeLive() {
   const request = new XMLHttpRequest();
   request.open('GET', `${APIURL}/streams?stream_type=live&limit=2`);
@@ -84,41 +131,95 @@ function requestMayLikeLive() {
   request.send();
 }
 
-// 頁面第一次載入
-
-function autoPlay() {
-  const main = document.querySelector('.main .iframe-inject').getAttribute('id');
-  playVideo = template.carouselPlay(main);
-}
+/* ---------------------------------- */
+/*          Carousel 播放影片           */
+/* ---------------------------------- */
 
 function getClips() {
-  console.log(JSON.parse(this.response));
-  const data = JSON.parse(this.response);
-  data.featured.forEach((d, index) => {
-    template.carouselTemplate(
-      index,
-      d.stream.channel.name,
-      d.stream.channel.display_name,
-      d.stream.preview.large,
-      d.stream.channel.logo,
-      d.stream.game,
-      d.stream.channel.language,
-      d.stream.channel.description,
-      d.stream.viewers,
-    );
-  });
-  autoPlay();
+  if (this.status >= 200 && this.status < 400) {
+    let data;
+    try {
+      data = JSON.parse(this.response);
+    } catch (err) {
+      errorHandler(err);
+      return;
+    }
+    data.featured.forEach((d, index) => {
+      template.carouselTemplate(
+        index,
+        d.stream.channel.name,
+        d.stream.channel.display_name,
+        d.stream.preview.large,
+        d.stream.channel.logo,
+        d.stream.game,
+        d.stream.channel.language,
+        d.stream.channel.description,
+        d.stream.viewers,
+      );
+    });
+    autoPlay();
+  } else {
+    errorHandler(this.status);
+  }
 }
 
-// Get Clips
 function requestClips() {
   const request = new XMLHttpRequest();
   request.open('GET', `${APIURL}/streams/featured?limit=5`);
   request.setRequestHeader('Client-ID', CLIENT_ID);
   request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
   request.onload = getClips;
+  request.onerror = errorHandler;
   request.send();
 }
+
+/* ---------------------------------- */
+/*             20 個相關影片            */
+/* ---------------------------------- */
+
+function getTwentyVideos() {
+  if (this.status >= 200 && this.status < 400) {
+    let data;
+    try {
+      data = JSON.parse(this.response);
+    } catch (err) {
+      errorHandler(err);
+      return;
+    }
+    const twentyArea = document.querySelector('.twenty-area');
+    twentyArea.innerHTML = '';
+    data.streams.forEach((d) => {
+      template.liveVideo(
+        d.preview.large,
+        d.channel.description,
+        d.channel.logo,
+        d.channel.display_name,
+        d.channel.name,
+        d.channel.game,
+        d.viewers,
+        { mayLike: false },
+        { twenty: true },
+      );
+    });
+  } else {
+    errorHandler(this.status);
+  }
+}
+
+function requestTwentyStreams(gameName) {
+  const request = new XMLHttpRequest();
+  request.open('GET', `${APIURL}/streams/?game=${gameName}&limit=20`);
+  request.setRequestHeader('Client-ID', CLIENT_ID);
+  request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
+  request.onload = getTwentyVideos;
+  request.onerror = errorHandler;
+  request.send();
+}
+
+category.addEventListener('click', (e) => {
+  const categoryName = e.target.dataset.game;
+  requestTwentyStreams(categoryName);
+});
 
 requestClips();
 requestChannels();
@@ -144,7 +245,7 @@ const carouselCard = document.querySelectorAll('.carousel-card');
 
 function playCarousel() {
   const channelId = document.querySelector('.main .iframe-inject').getAttribute('id');
-  playVideo = template.carouselPlay(channelId);
+  currentPlayVideo = template.carouselPlay(channelId);
 }
 
 function stopCarousel(left, right) {
@@ -221,13 +322,13 @@ rightArrow.addEventListener('click', () => {
 
 document.addEventListener('click', (e) => {
   if (e.target.closest('.play-btn')) {
-    if (playVideo.isPaused()) {
+    if (currentPlayVideo.isPaused()) {
       const playBtn = document.querySelector('.main .play-btn');
-      playVideo.play();
+      currentPlayVideo.play();
       playBtn.childNodes[1].setAttribute('src', './src/play_btn.svg');
     } else {
       const playBtn = document.querySelector('.main .play-btn');
-      playVideo.pause();
+      currentPlayVideo.pause();
       playBtn.childNodes[1].setAttribute('src', './src/pause.svg');
     }
   } else if (e.target.closest('.full')) {

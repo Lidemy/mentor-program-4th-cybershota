@@ -5,6 +5,8 @@
 }
 
 body {
+  width: 100vw;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
     'Open Sans', 'Helvetica Neue', sans-serif;
   overflow: hidden;
@@ -17,14 +19,14 @@ img {
 
 button {
   width: 60px;
+  padding: 10px 10px;
   font-size: 1rem;
   font-weight: bold;
-  padding: 10px 10px;
-  color: var(--twitch-ice);
   border-radius: 8px;
+  color: var(--twitch-ice);
   background: var(--twitch-purple);
-  outline: none;
   border: 0;
+  outline: none;
   cursor: pointer;
 }
 
@@ -44,18 +46,21 @@ button:hover {
   --twitch-aside: rgb(32, 32, 35);
   --twitch-aside-hover: rgb(38, 38, 44);
   /* 左右版面尺寸 */
-  --aside-main-width: 240px;
+  --aside-main-width: 245px;
 }
 
 .container {
+  width: 100%;
   background: var(--twitch-black);
   color: var(--twitch-ice);
 }
 
 header {
+  max-width: 100vw;
+  width: 100vw;
+  min-width: 1024px;
   position: fixed;
   top: 0;
-  width: 100%;
   background: var(--twitch-dark-gray);
   z-index: 100;
 }
@@ -114,7 +119,6 @@ header {
 }
 
 .search-container {
-  flex: 1 1 1;
   margin: auto;
 }
 
@@ -131,10 +135,10 @@ form {
   font-size: 1rem;
   padding-left: 12px;
   border-radius: 8px 0 0 8px;
-  outline: none;
   border: 2px solid rgb(66, 66, 68);
   background: rgb(66, 66, 68);
   color: var(--twitch-ice);
+  outline: none;
   transition: all 0.1s linear;
 }
 
@@ -197,10 +201,9 @@ form {
   padding-bottom: 35px;
 }
 
-.wrapper {
-  margin-top: 65px;
-  width: 100%;
-}
+/* ---------------------------------- */
+/*                 主網頁              */
+/* ---------------------------------- */
 
 /* ---------------------------------- */
 /*             左側推薦頻道             */
@@ -208,13 +211,14 @@ form {
 
 aside {
   position: fixed;
+  top: 65px;
   width: var(--aside-main-width);
   height: 100%;
   overflow-y: scroll;
   padding: 20px 0;
   background: var(--twitch-aside);
+  z-index: 95;
   transition: all 0.6s ease;
-  z-index: 90;
 }
 
 .recommend h2 {
@@ -232,7 +236,7 @@ aside {
   justify-content: flex-start;
   align-items: flex-start;
   margin: 2px 0;
-  padding: 8px 8px;
+  padding: 6px 6px;
 }
 
 .recommend-block:hover {
@@ -243,7 +247,11 @@ aside {
 .recommend-block .avatar {
   width: 30px;
   height: 30px;
-  overflow: hidden;
+}
+
+.recommend-block .avatar img {
+  min-width: 30px;
+  min-height: 30px;
   border-radius: 50px;
 }
 
@@ -274,20 +282,27 @@ aside {
   align-self: flex-start;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: flex-start;
 }
 
 .recommend-view span:first-of-type {
   font-size: 12px;
   color: red;
+  margin-left: 4px;
   margin-right: 4px;
   line-height: 16px;
 }
 
 .recommend-view span:last-of-type {
   font-size: 0.75rem;
+  margin-right: 2px;
+  text-align: right;
 }
+
+/* ---------------------------------- */
+/*         加入 Twitch 行列！           */
+/* ---------------------------------- */
 
 .join-block {
   margin: 10px;
@@ -320,34 +335,48 @@ aside {
 /* ---------------------------------- */
 
 main {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  max-width: 1690px;
+  /* main 對齊視窗參數 */
+  width: 85vw;
+  margin-top: 65px;
+  margin-left: 15.5vw;
+  margin-right: 0vw;
+  /* 以上 */
   height: 100vh;
-  margin: auto;
   padding: 0px 30px 50px 30px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
-.aside-placeholder {
-  flex-shrink: 0;
-  flex-grow: 3;
-  flex-basis: 250px;
-  height: 100vh;
-}
-
 .main-container {
-  flex-shrink: 1;
   width: 100%;
-  height: 100vh;
+  height: auto;
   margin: auto;
+  display: flex;
   flex-flow: column wrap;
   justify-content: center;
   align-items: center;
+}
+
+/* ---------------------------------- */
+/*                 區塊                */
+/* ---------------------------------- */
+
+.block-area {
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 30px;
+}
+
+.block-area h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.block-area h3 span {
+  color: var(--twitch-purple);
 }
 
 /* ---------------------------------- */
@@ -355,15 +384,15 @@ main {
 /* ---------------------------------- */
 
 .carousel {
-  display: flex;
   position: relative;
   top: 5px;
+  display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 430px;
-  margin: 70px auto 0 auto;
+  margin: 30px auto 0px auto;
 }
 
 .left-arrow {
@@ -371,6 +400,10 @@ main {
   position: absolute;
   top: 200px;
   left: 0%;
+  margin-left: auto;
+  margin-right: auto;
+  left: -98%;
+  right: 0;
   z-index: 80;
   cursor: pointer;
 }
@@ -379,7 +412,10 @@ main {
   width: 40px;
   position: absolute;
   top: 200px;
-  right: 0%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: -98%;
   z-index: 80;
   cursor: pointer;
 }
@@ -423,9 +459,17 @@ main {
   font-size: 0.9rem;
 }
 
-.name-block .avatar {
+.name-block > .avatar {
   width: 70px;
   height: 70px;
+}
+
+.langtag {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 15px;
+  line-height: normal;
+  background: var(--twitch-light-gray);
 }
 
 .name-block img {
@@ -520,13 +564,13 @@ main {
 
 .left-control {
   position: absolute;
-  bottom: 20px;
+  bottom: 15px;
   left: 10px;
 }
 
 .right-control {
   position: absolute;
-  bottom: 20px;
+  bottom: 15px;
   right: 10px;
 }
 
@@ -549,7 +593,10 @@ main {
 .carousel-card.main {
   position: absolute;
   top: 6%;
-  left: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
   z-index: 50;
   width: 870px;
   transition: all 0.3s ease;
@@ -571,18 +618,24 @@ main {
 .carousel-card.main .gray-cover {
   position: absolute;
   top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
   right: 0;
   width: 100%;
   height: 360px;
   z-index: 90;
   background: none;
-  transition: background 1.5s ease;
+  transition: background 2.5s ease;
 }
 
 .carousel-card.left-first-card {
   position: absolute;
   top: 15%;
-  left: 12%;
+  margin-left: auto;
+  margin-right: auto;
+  left: -33%;
+  right: 0;
   z-index: 5;
   transition: all 0.3s ease;
   width: 540px;
@@ -599,7 +652,10 @@ main {
 .carousel-card.right-first-card {
   position: absolute;
   top: 15%;
-  left: 45%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0%;
+  right: -33%;
   z-index: 5;
   transition: all 0.3s ease;
   width: 540px;
@@ -616,7 +672,10 @@ main {
 .carousel-card.left-last-card {
   position: absolute;
   top: 20%;
-  left: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  left: -45%;
+  right: 0;
   z-index: 0;
   transition: all 0.3s ease;
   width: 440px;
@@ -633,7 +692,10 @@ main {
 .carousel-card.right-last-card {
   position: absolute;
   top: 20%;
-  left: 55%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0%;
+  right: -45%;
   z-index: 0;
   transition: all 0.3s ease;
   width: 440px;
@@ -647,24 +709,6 @@ main {
   transition: all 0.3s ease;
 }
 
-.block-area {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 30px;
-  margin-left: 15px;
-}
-
-.block-area h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.block-area h3 span {
-  color: var(--twitch-purple);
-}
-
 /* ---------------------------------- */
 /*            你可能喜歡的 Live         */
 /* ---------------------------------- */
@@ -674,17 +718,19 @@ main {
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .stream-block {
+  width: 100%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: flex-start;
   margin-right: 15px;
+  /* 控制立體效果 */
   max-width: 600px;
-  width: 100%;
+  min-width: 400px;
 }
 
 .video-wrapper {
@@ -704,8 +750,8 @@ main {
 .video-wrapper::after {
   content: ' ';
   display: block;
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   position: absolute;
   background: var(--twitch-purple);
   transition: all 0.1s cubic-bezier(0.03, 0.34, 0.66, 0.94);
@@ -766,7 +812,7 @@ main {
 .video-wrapper:hover img,
 .video-wrapper:hover .live-badge,
 .video-wrapper:hover .view-count {
-  transform: translate(10px, -11px);
+  transform: translate(8px, -10px);
 }
 
 .video-wrapper:hover::before {
@@ -778,7 +824,28 @@ main {
 }
 
 .streamer-card {
+  width: 100%;
   max-width: 600px;
+}
+
+.streamer-column {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.streamer-card .avatar {
+  width: 55px;
+  height: 55px;
+  margin-right: 10px;
+}
+
+.streamer-card img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50px;
 }
 
 .streamer-card h6 {
@@ -795,15 +862,20 @@ main {
   color: var(--twitch-gray);
 }
 
+.streamer-data {
+  width: 80%;
+}
+
 /* ---------------------------------- */
 /*                遊戲分類              */
 /* ---------------------------------- */
 
-.stream-category {
+.game-category {
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: flex-start;
+  margin-top: 10px;
 }
 
 .category-area {
@@ -811,12 +883,14 @@ main {
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
-  align-content: center;
+  align-content: flex-start;
 }
 
 .category-block {
-  width: 300px;
+  max-width: 230px;
+  width: 100%;
   margin-right: 12px;
+  cursor: pointer;
 }
 
 .streamer-card {
@@ -839,25 +913,75 @@ main {
 }
 
 /* ---------------------------------- */
+/*               20個影片              */
+/* ---------------------------------- */
+.twenty-area {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.twenty-area .stream-block {
+  margin-top: 20px;
+  max-width: 290px;
+  min-width: 100px;
+}
+
+.twenty-area .avatar {
+  margin-right: 5px;
+}
+
+.twenty-area .avatar img {
+  width: 40px;
+  height: 40px;
+}
+
+.twenty-area h6 {
+  font-size: 1rem;
+}
+
+.twenty-area p {
+  font-size: 0.75rem;
+}
+
+.twenty-area h4 {
+  flex: 1;
+  color: var(--twitch-purple);
+}
+
+.twenty-area .live-badge {
+  font-size: 0.75rem;
+  width: 40px;
+}
+
+/* ---------------------------------- */
 /*            圖片 Hover 效果           */
 /* ---------------------------------- */
 
 .img-wrapper {
-  margin: auto;
-  width: 300px;
-  height: 400px;
+  margin-left: 0px;
+  width: 100%;
+  height: auto;
   position: relative;
   top: 0;
   left: 0;
   background: var(--twitch-purple);
+  pointer-events: none;
+  /* 比例尺寸 */
+  max-width: 230px;
+  max-height: 321.32px;
+  min-width: 190px;
+  min-height: 265.44px;
 }
 
 .img-wrapper::before,
 .img-wrapper::after {
   content: ' ';
   display: block;
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   position: absolute;
   background: var(--twitch-purple);
   transition: all 0.1s cubic-bezier(0.03, 0.34, 0.66, 0.94);
@@ -872,32 +996,95 @@ main {
 
 .img-wrapper::after {
   right: 0;
-  bottom: 0;
+  bottom: 0px;
   transform-origin: bottom right;
   transform: rotate(45deg) scale(0);
 }
 
 .img-wrapper img {
-  position: absolute;
+  position: relative;
   top: 0;
-  left: 0;
-  width: 300px;
-  height: 400px;
-  cursor: pointer;
+  width: 100%;
+  height: 100%;
   transition: all 0.1s cubic-bezier(0.03, 0.34, 0.66, 0.94);
-  z-index: 3;
+  z-index: 10;
+  /* 比例尺寸 */
+  max-width: 230px;
+  max-height: 321.32px;
+  min-width: 190px;
+  min-height: 265.44px;
 }
 
-.img-wrapper:hover img {
-  transform: translate(7px, -7px);
+.stream-category:hover > .img-wrapper img {
+  transform: translate(5px, -5px);
 }
 
-.img-wrapper:hover::before {
+.stream-category:hover > .img-wrapper::before {
   transform: rotate(-45deg) scale(1);
 }
 
-.img-wrapper:hover::after {
+.stream-category:hover > .img-wrapper::after {
   transform: rotate(45deg) scale(1);
+}
+
+/* ---------------------------------- */
+/*               顯示更多              */
+/* ---------------------------------- */
+
+.show-more {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.show-more-btn {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 40px;
+  margin: 0 10px;
+  text-align: center;
+  cursor: not-allowed;
+}
+
+.show-more-btn:hover {
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.show-more a {
+  width: 200px;
+  text-decoration: none;
+  color: var(--twitch-purple);
+  cursor: not-allowed;
+}
+
+.show-more::before {
+  content: ' ';
+  width: 100%;
+  height: 5px;
+  margin-right: 20px;
+  border-bottom: 1px solid var(--twitch-medium-gray);
+}
+
+.show-more::after {
+  content: ' ';
+  width: 100%;
+  height: 5px;
+  margin-left: 20px;
+  border-bottom: 1px solid var(--twitch-medium-gray);
+}
+
+.show-more img {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  margin-right: 10px;
 }
 
 /* ---------------------------------- */
@@ -937,71 +1124,201 @@ main:hover::-webkit-scrollbar-thumb {
 
 @media (max-width: 1440px) {
   main {
-    max-width: 1440px;
-    width: 100vw;
+    margin-left: 16.5vw;
   }
 
-  .aside-placeholder {
-    flex-basis: 250px;
+  .img-wrapper {
+    /* 比例尺寸 */
+    max-width: 210px;
+    max-height: 293.38px;
+    min-width: 190px;
+    min-height: 265.44px;
   }
 
-  .carousel {
-    width: 95%;
-    left: -55px;
+  .img-wrapper img {
+    /* 比例尺寸 */
+    max-width: 210px;
+    max-height: 293.38px;
+    min-width: 190px;
+    min-height: 265.44px;
+  }
+
+  .twenty-area {
+    justify-content: flex-start;
+  }
+
+  .twenty-area .stream-block {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 1365px) {
+  main {
+    margin-left: 18.5vw;
   }
 
   .left-arrow {
-    left: 3.5%;
+    left: -95%;
   }
 
   .right-arrow {
-    right: -7.5%;
+    right: -95%;
+  }
+
+  .category-area {
+    flex-flow: row wrap;
+  }
+}
+
+@media (max-width: 1240px) {
+  main {
+    margin-left: 19.5vw;
+  }
+
+  .left-arrow {
+    display: none;
+  }
+
+  .right-arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 1126px) {
+  .carousel-card {
+    overflow: hidden;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background: transparent;
   }
 
   .carousel-card.main {
-    left: 13%;
+    width: 720px;
   }
 
-  .carousel-card.left-first-card {
-    left: 11.5%;
+  .carousel-card.main .info {
+    display: none;
   }
 
-  .carousel-card.left-last-card {
-    left: 10.5%;
+  .gray-cover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 405px;
+    background: var(--twitch-dark-gray);
+    pointer-events: none;
   }
 
-  .carousel-card.right-first-card {
-    left: 47%;
+  .iframe-inject {
+    width: 720px;
+    height: 405px;
   }
 
+  .video-control {
+    width: 720px;
+    height: 405px;
+  }
+
+  .carousel-card.main .carousel-view {
+    max-width: 720px;
+    max-height: 405px;
+    min-width: 720px;
+    min-height: 405px;
+    z-index: 55;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-card.left-first-card,
+  .carousel-card.right-first-card,
+  .carousel-card.left-last-card,
   .carousel-card.right-last-card {
-    left: 58%;
+    display: none;
+  }
+
+  .block-area {
+    width: 95%;
   }
 
   .stream-block {
-    width: 50%;
+    /* 控制立體效果 */
+    max-width: 550px;
+    min-width: 350px;
+  }
+
+  .video-wrapper::before,
+  .video-wrapper::after {
+    width: 8px;
+    height: 8px;
+  }
+
+  .video-wrapper:hover img,
+  .video-wrapper:hover .live-badge,
+  .video-wrapper:hover .view-count {
+    transform: translate(6px, -6px);
   }
 
   .streamer-card {
     width: 100%;
-  }
-
-  .category-block {
-    width: 100%;
+    max-width: 550px;
   }
 
   .img-wrapper {
-    margin-left: 0;
-    width: 250px;
-    height: 350px;
+    margin-left: 0px;
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    background: var(--twitch-purple);
+    pointer-events: none;
+    /* 比例尺寸 */
+    max-width: 230px;
+    max-height: 321.32px;
+    min-width: 190px;
+    min-height: 265.44px;
   }
 
   .img-wrapper img {
-    width: 250px;
-    height: 350px;
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.1s cubic-bezier(0.03, 0.34, 0.66, 0.94);
+    z-index: 10;
+    /* 比例尺寸 */
+    max-width: 230px;
+    max-height: 321.32px;
+    min-width: 190px;
+    min-height: 265.44px;
   }
 }
 
 /* tablet portrait 1024 */
 @media (max-width: 1024px) {
+  main {
+    margin-left: 20.5vw;
+  }
+
+  .img-wrapper {
+    /* 比例尺寸 */
+    max-width: 210px;
+    max-height: 293.38px;
+    min-width: 190px;
+    min-height: 265.44px;
+  }
+
+  .img-wrapper img {
+    /* 比例尺寸 */
+    max-width: 210px;
+    max-height: 293.38px;
+    min-width: 190px;
+    min-height: 265.44px;
+  }
+
+  .twenty-area .stream-block {
+    max-width: 350px;
+  }
 }
