@@ -1,0 +1,675 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Questrial', 'Microsoft JhengHei', '微軟正黑', 'Noto Sans TC', sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  max-width: 1920px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: stretch;
+  overflow-x: hidden;
+  margin: auto auto;
+  width: 100%;
+  height: 100%;
+}
+
+/* 導覽列 */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: white;
+}
+
+.nav-group {
+  display: flex;
+  flex-direction: row nowrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 1920px;
+  height: auto;
+  overflow-x: hidden;
+  padding: 20px 60px;
+  margin: auto;
+  box-shadow: 0 4px 6px -7px rgba(0, 0, 0, 0.7);
+}
+
+.navbar-sitename {
+  color: #489846;
+  font-size: 2.25rem;
+  padding-bottom: 1.6px;
+  text-align: center;
+}
+
+.navbar-list {
+  display: inherit;
+  margin-left: auto;
+  font-size: 5.5rem;
+  list-style: none;
+}
+
+.navbar-list li {
+  margin: 0 3.68px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.navbar-list li.active,
+.navbar-list li:hover {
+  background: #ff7286;
+}
+
+.navbar-list li.active a,
+.navbar-list li:hover a {
+  color: white;
+}
+
+.navbar-list li a {
+  display: inherit;
+  text-decoration: none;
+  color: black;
+  margin-top: 4px;
+  padding: 8px 12.8px;
+  font-size: 1.125rem;
+}
+
+.navbar .menu-btn,
+.navbar .menu-icon {
+  display: none;
+}
+
+footer {
+  flex-shrink: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.875rem;
+  z-index: 10;
+}
+
+.light-green {
+  width: 100%;
+  padding: 1rem 0 3rem 0;
+  background-color: #e8efee;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  width: 90%;
+}
+
+.detail {
+  margin-top: 0.6rem;
+  color: #484848;
+}
+
+.detail > ul > li {
+  list-style: none;
+  line-height: normal;
+  font-size: 0.875rem;
+}
+
+.brand {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.brand h3 {
+  color: #489846;
+  font-size: 2.25rem;
+  font-weight: normal;
+}
+
+.brand a {
+  text-decoration: none;
+  color: #484848;
+  font-size: 0.875rem;
+}
+
+.dark-green {
+  background-color: #35564b;
+  width: 100%;
+  height: auto;
+  color: white;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.dark-green p {
+  margin: auto;
+  max-width: 80%;
+}
+
+/* ---------------------------------- */
+/*                 抽獎                */
+/* ---------------------------------- */
+
+.section-lottery {
+  width: 100%;
+  flex: 1 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.background {
+  position: relative;
+  width: 100%;
+  flex: 1 0 auto;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.initial-bg {
+  background-image: url('../src/games-bn.webp'), url('../src/games-bn_tiny.jpg');
+}
+
+.lose-bg {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(53, 86, 75, 1) 100%);
+}
+/* Video tag to fill 100% div regardless of ratios */
+/* https://stackoverflow.com/questions/22874155/video-tag-to-fill-100-div-regardless-of-ratios */
+.video-container {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+}
+
+.lottery-info {
+  position: absolute;
+  top: 18%;
+  left: 0%;
+  right: 0%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  min-width: 500px;
+  background: white;
+  border-radius: 10px;
+}
+
+.lottery-info__title {
+  margin: 30px 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #5ec1b6;
+}
+
+.lottery-info__block {
+  align-self: flex-start;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.block-content {
+  align-self: flex-start;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.lottery-info__block::after {
+  content: ' ';
+  width: 90%;
+  margin: 10px 0;
+  border-bottom: 1px dotted #cdcdcd;
+}
+
+.title {
+  align-self: flex-start;
+  flex-basis: 20%;
+  margin: 0 20px;
+  font-size: 1.125rem;
+  font-weight: bold;
+  text-align: left;
+  color: #322929;
+}
+
+.content {
+  width: 60%;
+  margin: 0 20px 0 0;
+  font-size: 1rem;
+  color: #322929;
+}
+
+.lottery-info__btn {
+  width: 400px;
+  margin: 25px 25px;
+  padding: 10px 10px;
+  border-radius: 8px;
+  background-color: #e62a45;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.lottery-info__btn:hover {
+  background-color: #fe3956;
+  transition: background 0.2s ease;
+}
+
+.lottery-result {
+  position: absolute;
+  top: 45%;
+  left: 0%;
+  right: 0%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  min-width: 500px;
+  background: white;
+  border-radius: 10px;
+  transform: scale(0);
+}
+
+.lottery-result__title {
+  margin: 20px 20px;
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
+/* ---------------------------------- */
+/*              Animation             */
+/* ---------------------------------- */
+.confetti-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slide-in-top {
+  -webkit-animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2020-9-23 21:2:39
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation slide-in-top
+ * ----------------------------------------
+ */
+@-webkit-keyframes slide-in-top {
+  0% {
+    -webkit-transform: translateY(-1000px);
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-top {
+  0% {
+    -webkit-transform: translateY(-1000px);
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-out-top {
+  -webkit-animation: slide-out-top 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  animation: slide-out-top 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2020-9-23 20:24:8
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation slide-out-top
+ * ----------------------------------------
+ */
+@-webkit-keyframes slide-out-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(-1000px);
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+}
+@keyframes slide-out-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(-1000px);
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+}
+
+.bounce-in-fwd {
+  -webkit-animation: bounce-in-fwd 1.1s 0.5s forwards;
+  animation: bounce-in-fwd 1.1s 0.5s forwards;
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2020-9-23 20:8:53
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation bounce-in-fwd
+ * ----------------------------------------
+ */
+@-webkit-keyframes bounce-in-fwd {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  38% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+  55% {
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  72% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  81% {
+    -webkit-transform: scale(0.84);
+    transform: scale(0.84);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  89% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  95% {
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+}
+@keyframes bounce-in-fwd {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  38% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+  55% {
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  72% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  81% {
+    -webkit-transform: scale(0.84);
+    transform: scale(0.84);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  89% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  95% {
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+}
+
+/* ---------------------------------- */
+/*                 RWD                */
+/* ---------------------------------- */
+
+/* tablet portrait 1024 */
+@media (max-width: 1024px) {
+  .section-lottery {
+    width: 100%;
+    flex: 1 1 auto;
+    height: 800px;
+  }
+
+  .background {
+    top: 80px;
+  }
+
+  footer {
+    flex-shrink: 1;
+  }
+}
+
+/* tablet portrait 768 */
+/* 漢堡選單出現 */
+@media (max-width: 768px) {
+  .background {
+    top: 100px;
+  }
+
+  .nav-group {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 15px 60px;
+  }
+
+  .navbar-sitename {
+    flex: 1 0 80%;
+    line-height: 2.25rem;
+    margin: auto;
+  }
+
+  .navbar .menu-icon {
+    cursor: pointer;
+    display: block;
+    margin: 5px 0;
+    padding: 22px 8px;
+  }
+
+  .navbar .menu-icon .hamburger-icon {
+    background-color: rgb(79, 79, 79);
+    display: block;
+    height: 3px;
+    width: 30px;
+    position: relative;
+    transition: background 0.2s ease-out;
+  }
+
+  .navbar .menu-icon .hamburger-icon:before,
+  .navbar .menu-icon .hamburger-icon:after {
+    background-color: rgb(79, 79, 79);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    transition: all 0.2s ease-out;
+  }
+
+  .navbar .menu-icon .hamburger-icon:before {
+    top: 10px;
+  }
+
+  .navbar .menu-icon .hamburger-icon:after {
+    top: -10px;
+  }
+
+  .navbar .navbar-list {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    max-height: 0;
+    overflow: hidden;
+    text-align: center;
+    transition: max-height 0.2s ease-out;
+  }
+
+  .navbar .menu-btn:checked ~ .navbar-list {
+    max-height: 240px;
+  }
+
+  /* 漢堡動畫 */
+  /* 漢堡按下後，線條會變透明 */
+  .navbar .menu-btn:checked ~ .menu-icon .hamburger-icon {
+    background: transparent;
+  }
+
+  /* 上下兩條線各自旋轉 */
+  .navbar .menu-btn:checked ~ .menu-icon .hamburger-icon:before {
+    transform: rotate(-45deg);
+  }
+
+  .navbar .menu-btn:checked ~ .menu-icon .hamburger-icon:after {
+    transform: rotate(45deg);
+  }
+
+  /* 強制矯正旋轉軸心？？ */
+  /* 如果沒加以下，線條旋轉會無法形成差差，反而很像大於符號 */
+  .navbar .menu-btn:checked ~ .menu-icon .hamburger-icon:before,
+  .navbar .menu-btn:checked ~ .menu-icon .hamburger-icon:after {
+    top: 0;
+  }
+
+  .navbar-list {
+    display: none;
+  }
+
+  .footer-info {
+    width: 100%;
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+}
+
+/* mobile landscape 568 */
+@media (max-width: 568px) {
+  .footer-info {
+    width: 80%;
+  }
+}
+
+/* mobile portrait 320 */
+@media (max-width: 320px) {
+  .container {
+    /* 不知道為什麼在這著尺寸整個畫面會微微偏移 */
+    margin: auto -5%;
+  }
+}
