@@ -3,3 +3,4 @@ conn.php
 .DS_STORE
 .env
 .vscode/settings.json
+package-lock.json
